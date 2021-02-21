@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Isha | {{ post.title_tag }}
+{% endblock %}
+
+{% block content %}
+
+<h2>Add Post...</h2>
+    <br/>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-secondary">
+        Post
+    </button>
+</form>
+
+
+{% endblock %}
