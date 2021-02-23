@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Isha | {{ post.title_tag }}
+    Isha | Create a blog category
 {% endblock %}
 
 {% block content %}
@@ -9,24 +9,17 @@
 
 {% if user.is_authenticated %}
 
-    <h2>Add Post...</h2>
+    <h2>Add Category...</h2>
         <br/>
     <div class="mb-3">
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-secondary">
-                Post
+                Add
             </button>
         </form>
     </div>
-
-<script>
-
-    var name = "{{ user.id }}";
-    document.getElementById("isha_id").value = name;
-
-</script>
 
 {% else %}
 

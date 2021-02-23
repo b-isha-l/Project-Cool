@@ -6,6 +6,9 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+
 <h2>Delete Post...</h2>
     <br/>
 <h3>
@@ -20,5 +23,14 @@
             Delete
         </button>
 </div>
+{% else %}
+
+        You are not allowed here !!
+    {% endif %}
+
+{% else %}
+
+You are not allowed here !!
+{% endif %}
 
 {% endblock %}
