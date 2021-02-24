@@ -27,6 +27,12 @@
 </small>
     <hr>
     <br/>
+
+{% if post.header_image %}
+    <img src="{{ post.header_image.url }}">
+{% endif %}
+
+<br/><br/>
 {{ post.body|safe }}
 
     <br/>
@@ -36,7 +42,33 @@
     <hr><br/>
     <form action="{% url 'like_post' post.pk %}" method="POST">
         {% csrf_token %}
-        <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary btn-sm">Like</button>
+
+        {% if user.is_authenticated %}
+        {% if liked %}
+        <button type="submit",
+                name="post_id",
+                value="{{ post.id }}",
+                class="btn btn-danger btn-sm">
+            Unlike
+        </button>
+
+        {% else %}
+        <button type="submit",
+                name="post_id",
+                value="{{ post.id }}",
+                class="btn btn-primary btn-sm">
+            Like
+        </button>
+
+        {% endif %}
+
+        {% else %}
+            <small>Please,
+            <a href="{% url 'login' %}"><strong>Login</strong></a>
+                to like the post.
+            </small>
+        {% endif %}
+
         - {{ total_likes }} Likes
     </form>
 

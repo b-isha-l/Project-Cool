@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Isha | Edit Profile
+{% endblock %}
+
+{% block content %}
+
+<h2>Edit Profile...</h2>
+    <br/><br/>
+{{ user.profile.bio }}
+    <br/><br/>
+<div class="mb-3">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">
+            Update Profile
+        </button>
+    </form>
+</div>
+{% endblock %}
