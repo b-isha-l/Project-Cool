@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Isha | Create a new blog post
+    Isha | Create a new profile page
 {% endblock %}
 
 {% block content %}
@@ -9,25 +9,18 @@
 
 {% if user.is_authenticated %}
 
-    <h2>Add Post...</h2>
+    <h2>Create Profile Page...</h2>
         <br/>
     <div class="mb-3">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.media }}
             {{ form.as_p }}
             <button class="btn btn-secondary">
-                Post
+                Create Profile
             </button>
         </form>
     </div>
 
-<script>
-
-    var name = "{{ user.id }}";
-    document.getElementById("isha_id").value = name;
-
-</script>
 
 {% else %}
 

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Isha | Create a new blog post
+    Isha | Edit profile page
 {% endblock %}
 
 {% block content %}
@@ -9,25 +9,23 @@
 
 {% if user.is_authenticated %}
 
-    <h2>Add Post...</h2>
+{% if user.id == profile.user.id %}
+
+    <h2>Edit Profile...</h2>
         <br/>
     <div class="mb-3">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.media }}
             {{ form.as_p }}
             <button class="btn btn-secondary">
-                Post
+                Update Profile
             </button>
         </form>
     </div>
+{% else %}
+You are not correct user!!
 
-<script>
-
-    var name = "{{ user.id }}";
-    document.getElementById("isha_id").value = name;
-
-</script>
+{% endif %}
 
 {% else %}
 

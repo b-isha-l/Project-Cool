@@ -1,37 +1,23 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Isha | Create a new blog post
+    Isha | Comment on blog post
 {% endblock %}
 
 {% block content %}
 
 
-{% if user.is_authenticated %}
-
-    <h2>Add Post...</h2>
+    <h2>Add Comment...</h2>
         <br/>
     <div class="mb-3">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.media }}
             {{ form.as_p }}
             <button class="btn btn-secondary">
-                Post
+                Comment
             </button>
         </form>
     </div>
 
-<script>
 
-    var name = "{{ user.id }}";
-    document.getElementById("isha_id").value = name;
-
-</script>
-
-{% else %}
-
-You are not allowed here !!
-
-{% endif %}
 {% endblock %}
